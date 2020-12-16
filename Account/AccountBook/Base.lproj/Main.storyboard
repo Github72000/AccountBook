@@ -13,13 +13,12 @@
         <!--记账本-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="recordViewController" customModule="AccountBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgC-ak-1bx">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OgC-ak-1bx">
                                 <rect key="frame" x="0.0" y="88" width="414" height="135"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxo-dm-UUA">
@@ -135,10 +134,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpy-LX-pkh">
-                                <rect key="frame" x="189" y="740" width="36" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Add"/>
+                            <button autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpy-LX-pkh">
+                                <rect key="frame" x="175" y="711" width="64" height="64"/>
+                                <color key="backgroundColor" red="0.22745098039215686" green="0.52549019607843139" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="12" minY="12" maxX="12" maxY="12"/>
+                                <state key="normal" image="Add"/>
                                 <connections>
                                     <segue destination="Gwz-Tt-6J3" kind="show" id="vV5-eI-nQI"/>
                                 </connections>
@@ -146,23 +146,24 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lpy-LX-pkh" secondAttribute="bottom" constant="37" id="4px-WR-bSb"/>
-                            <constraint firstItem="OgC-ak-1bx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="76K-So-zW1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lpy-LX-pkh" secondAttribute="bottom" constant="38" id="4px-WR-bSb"/>
+                            <constraint firstItem="lpy-LX-pkh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Kn7-9t-BbD"/>
                             <constraint firstItem="OgC-ak-1bx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hJs-ln-TgU"/>
-                            <constraint firstItem="lpy-LX-pkh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wcj-J5-XNn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="记账本" id="ehR-gX-uH5"/>
                     <connections>
+                        <outlet property="addRecordButton" destination="lpy-LX-pkh" id="szi-S7-C9m"/>
                         <outlet property="costTotalLabel" destination="DFB-nt-AZF" id="TD1-zH-EC2"/>
                         <outlet property="dateLabel" destination="pxo-dm-UUA" id="4r7-W7-tiv"/>
                         <outlet property="incomeTotalLabel" destination="M1O-bW-VnC" id="rf2-2f-ojl"/>
                         <outlet property="recordTableView" destination="XIZ-Zg-STh" id="aMC-UK-Sob"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="120"/>
+            <point key="canvasLocation" x="1950.7246376811595" y="119.86607142857142"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="3hu-z7-tbR">
@@ -330,7 +331,10 @@
             <point key="canvasLocation" x="1022" y="820"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Add" width="64" height="64"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vV5-eI-nQI"/>
+        <segue reference="qbK-Wj-h1D"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,10 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
     @IBOutlet weak var recordTableView: UITableView!
     @IBOutlet weak var incomeTotalLabel: UILabel!
     
+    //主界面添加账单按钮
+    @IBOutlet weak var addRecordButton: UIButton!
+    
+    
     var recordList : [recordInfo] = []
     
     
@@ -30,6 +34,9 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
         dateLabel.text = "12月15日"
         costTotalLabel.text = "888.88"
         incomeTotalLabel.text = "666.66"
+        
+        //设置按钮圆角
+        addRecordButton.layer.cornerRadius = 32;
         
     }
     
