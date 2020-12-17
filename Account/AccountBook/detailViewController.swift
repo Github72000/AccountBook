@@ -23,10 +23,12 @@ class detailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         if let _recordList = self.record{
-            typeField.text = record?.item
-            placeField.text = record?.place
-            accountField.text = record?.cost
-                dateField.text = record?.date
+            typeField.text = _recordList.itemName
+            placeField.text = _recordList.place
+            accountField.text = _recordList.cost?.description
+            if let _date=record?.date{
+                dateField.text = ABFormatter.dateFormatter.string(from: _date)
+            }
         }
     }
     
@@ -37,7 +39,7 @@ class detailViewController: UIViewController {
         
         if segue.identifier == "save"{
             record = recordInfo (
-                item: typeField.text!,
+                itemName: typeField.text!,
                 cost: accountField.text!,
                 date: dateField.text!,
                 place: placeField.text!

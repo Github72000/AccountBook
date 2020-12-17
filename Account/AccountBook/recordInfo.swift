@@ -19,25 +19,43 @@ class recordInfo : NSObject,NSCoding
         coder.encode(self.place, forKey: "placeKey")
         coder.encode(self.cost,forKey: "costKey")
         coder.encode(self.date,forKey: "dateKey")
-        coder.encode(self.item,forKey: "itemKey")
+        coder.encode(self.itemName,forKey: "itemKey")
     }
     
     required init?(coder: NSCoder) {
         place = (coder.decodeObject(forKey: "placeKey") as? String)
-        cost = (coder.decodeObject(forKey: "costKey") as? String)
-        date = (coder.decodeObject(forKey: "dateKey") as? String)
-        item = (coder.decodeObject(forKey: "itemKey") as? String)
+        cost = (coder.decodeObject(forKey: "costKey") as? Float)
+        date = (coder.decodeObject(forKey: "dateKey") as? Date)
+        itemName = (coder.decodeObject(forKey: "itemKey") as! String)
     }
     
-    var cost: String?
+    var cost: Float?
     var place: String?
-    var date: String?
-    var item: String?
+    var date: Date? //日期精确到分，一般只用到日 "yyyy/MM/dd HH:mm"
+    //consider to use DateFormmatter to format the date
+    /*
+     if you want to show the month, day, and year without showing the time,
+     you would set the dateStyle property to DateFormatter.Style.long and the
+     timeStyle property to DateFormatter.Style.none.
+     */
     
-    init(item:String , cost:String ,date: String,place:String) {
-        self.item = item
-        self.cost = cost
-        self.date = date
+    
+    var itemName: String
+    
+    
+    init(itemName:String , cost:String ,date: String,place:String) {
+        self.itemName = itemName
+        self.cost = Float(cost)
+        self.date = ABFormatter.dateFormatter.date(from: date)
         self.place = place
     }
+    
+    init(itemName:String,cost:Float,date:Date,place:String){
+        self.itemName=itemName
+        self.cost=cost
+        self.date=date
+        self.place=place
+    }
+    
+    
 }
