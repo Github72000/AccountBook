@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8458B8552589A26D00A892D3 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458B8542589A26D00A892D3 /* Formatter.swift */; };
 		A52E9D2B258861370070B1FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52E9D2A258861370070B1FD /* AppDelegate.swift */; };
 		A52E9D30258861370070B1FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A52E9D2E258861370070B1FD /* Main.storyboard */; };
 		A52E9D322588613B0070B1FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A52E9D312588613B0070B1FD /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8458B8542589A26D00A892D3 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		A52E9D27258861370070B1FD /* AccountBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A52E9D2A258861370070B1FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A52E9D2F258861370070B1FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8458B8512589A20700A892D3 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				8458B8542589A26D00A892D3 /* Formatter.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		A52E9D1E258861370070B1FD = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 		A52E9D29258861370070B1FD /* AccountBook */ = {
 			isa = PBXGroup;
 			children = (
+				8458B8512589A20700A892D3 /* util */,
 				A52E9D2A258861370070B1FD /* AppDelegate.swift */,
 				A52E9D2E258861370070B1FD /* Main.storyboard */,
 				A5B3F10A2588C18F0042F472 /* recordTableViewCell.swift */,
@@ -265,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8458B8552589A26D00A892D3 /* Formatter.swift in Sources */,
 				A5B3F1092588A7440042F472 /* recordViewController.swift in Sources */,
 				A52E9D5D25888D700070B1FD /* detailViewController.swift in Sources */,
 				A52E9D6125888DCF0070B1FD /* recordInfo.swift in Sources */,

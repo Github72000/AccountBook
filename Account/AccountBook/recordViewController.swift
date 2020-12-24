@@ -30,7 +30,8 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
         recordTableView.delegate = self
         recordTableView.dataSource = self
         // Do any additional setup after loading the view.
-        loadRecords()
+        //loadRecords()
+        initArray()
         dateLabel.text = "12月15日"
         costTotalLabel.text = "888.88"
         incomeTotalLabel.text = "666.66"
@@ -62,8 +63,8 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
     
     func initArray() -> Void {
         
-        recordList.append(recordInfo(item: "饮食", cost: "-23.5", date: "12月15日", place: "二饭三麻辣香锅"))
-        recordList.append(recordInfo(item: "红包", cost: "+110.7", date: "12月14日", place: "支付宝现金红包"))
+        recordList.append(recordInfo(itemName: "饮食", cost: "-23.5", date: "2020/12/13 12:00", place: "二饭三麻辣香锅"))
+        recordList.append(recordInfo(itemName: "红包", cost: "+110.7", date: "2020/12/14 13:58", place: "支付宝现金红包"))
         return
     }
     
@@ -83,10 +84,10 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! recordTableViewCell
         // Configure the cell...
-        cell.itemLabel?.text = recordList[indexPath.row].item
+        cell.itemLabel?.text = recordList[indexPath.row].itemName
         cell.placeLabel?.text = recordList[indexPath.row].place
-        cell.timeLabel?.text = recordList[indexPath.row].date
-        cell.costLabel?.text = recordList[indexPath.row].cost
+        cell.timeLabel?.text = ABFormatter.dateFormatter.string(from: recordList[indexPath.row].date!)
+        cell.costLabel?.text = recordList[indexPath.row].cost?.description
 
         
         return cell
@@ -96,7 +97,8 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         recordList.remove(at: indexPath.row)
-        tableView.reloadData();
+        saveRecords()
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
     
@@ -135,7 +137,7 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
     }
     @IBAction func cancelToList(segue:UIStoryboardSegue)
     {
-        
+        recordTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -144,7 +146,7 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
         if let destVC = segue.destination as? detailViewController{
             if let selectedIndex = recordTableView.indexPathForSelectedRow{
                 destVC.record = recordList[selectedIndex.row]
-                print(recordList[selectedIndex.row].item)
+                print(recordList[selectedIndex.row].itemName)
             }
         }
     }
