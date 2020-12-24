@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81C53B63259428AD00E2822A /* StatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C53B62259428AD00E2822A /* StatInfo.swift */; };
 		8458B8552589A26D00A892D3 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458B8542589A26D00A892D3 /* Formatter.swift */; };
 		A52E9D2B258861370070B1FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52E9D2A258861370070B1FD /* AppDelegate.swift */; };
 		A52E9D30258861370070B1FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A52E9D2E258861370070B1FD /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81C53B62259428AD00E2822A /* StatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatInfo.swift; sourceTree = "<group>"; };
 		8458B8542589A26D00A892D3 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		A52E9D27258861370070B1FD /* AccountBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A52E9D2A258861370070B1FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				A52E9D362588613B0070B1FD /* Info.plist */,
 				A52E9D5C25888D700070B1FD /* detailViewController.swift */,
 				A52E9D6025888DCF0070B1FD /* recordInfo.swift */,
+				81C53B62259428AD00E2822A /* StatInfo.swift */,
 			);
 			path = AccountBook;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				8458B8552589A26D00A892D3 /* Formatter.swift in Sources */,
 				A5B3F1092588A7440042F472 /* recordViewController.swift in Sources */,
+				81C53B63259428AD00E2822A /* StatInfo.swift in Sources */,
 				A52E9D5D25888D700070B1FD /* detailViewController.swift in Sources */,
 				A52E9D6125888DCF0070B1FD /* recordInfo.swift in Sources */,
 				A52E9D2B258861370070B1FD /* AppDelegate.swift in Sources */,
