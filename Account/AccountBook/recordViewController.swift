@@ -22,20 +22,19 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
     
     
     var recordList : [recordInfo] = []
-    
+    var totalCost:Float = 0.00
+    var totalIncome:Float = 0.00
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         recordTableView.delegate = self
         recordTableView.dataSource = self
         // Do any additional setup after loading the view.
         //loadRecords()
         initArray()
-        dateLabel.text = "12月15日"
-        costTotalLabel.text = "888.88"
-        incomeTotalLabel.text = "666.66"
-        
+        //ABFormatter.dateFormatter.dateFormat = "MM-dd"
+        dateLabel.text = ABFormatter.dateFormatter.string(from: Date())
+        refreshTotalLabel()
         //设置按钮圆角
         addRecordButton.layer.cornerRadius = 32;
         
@@ -57,14 +56,29 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
         }
         else
         {
-            initArray()
+            //initArray()
         }
+    }
+    
+    func refreshTotalLabel() {
+        var totalCost:Float = 0.00
+        var totalIncome:Float = 0.00
+        for record in recordList{
+            if Float(record.cost!) > 0 {
+                totalCost += record.cost!
+            } else{
+                totalIncome += -record.cost!
+            }
+        }
+        costTotalLabel.text = String(totalCost)
+        incomeTotalLabel.text = String(totalIncome)
     }
     
     func initArray() -> Void {
         
-        recordList.append(recordInfo(itemName: "饮食", cost: "-23.5", date: "2020/12/13 12:00", place: "二饭三麻辣香锅"))
-        recordList.append(recordInfo(itemName: "红包", cost: "+110.7", date: "2020/12/14 13:58", place: "支付宝现金红包"))
+        loadRecords()
+        //recordList.append(recordInfo(itemName: "饮食", cost: "-23.5", date: "2020/12/13 12:00", place: "二饭三麻辣香锅"))
+        //recordList.append(recordInfo(itemName: "红包", cost: "+110.7", date: "2020/12/14 13:58", place: "支付宝现金红包"))
         return
     }
     
@@ -133,8 +147,9 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
             }
         }
         saveRecords()
-        
+        refreshTotalLabel()
     }
+    
     @IBAction func cancelToList(segue:UIStoryboardSegue)
     {
         recordTableView.reloadData()
