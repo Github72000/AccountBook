@@ -41,6 +41,62 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
         
     }
     
+    
+    //funcCHG
+    func currentTime() -> String {
+        
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"// 自定义时间格式
+        
+        // GMT时间 转字符串，直接是系统当前时间
+        
+        return dateformatter.string(from: Date())
+        
+    }
+    
+    func showAlert(currentIndexRow: Int){
+        
+        let selectedRecord = recordList[currentIndexRow]
+        
+        //problem1  !
+        let messageItem = "消费类型: "+selectedRecord.itemName
+        let messageCost = "消费金额: "+selectedRecord.cost!.description
+        let messagePlace = "消费条目: "+selectedRecord.place!.description
+        let messageDate = "消费时间: "+ABFormatter.dateFormatter.string(from: selectedRecord.date!)
+        
+        let alert = UIAlertController(title: "消费详情", message: messageItem+"\n"+messageCost+"\n"+messagePlace+"\n"+messageDate, preferredStyle: UIAlertController.Style.alert)
+        
+        let yes = UIAlertAction.init(title: "OK", style: UIAlertAction.Style.default) { (alerts) in
+            
+            print("Yes.")
+            
+        }
+        
+        
+        
+        alert.addAction(yes)
+        
+        
+        self.present(alert, animated: true, completion: nil)
+        
+        recordTableView.reloadData()
+    }
+    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let CurrentIndexRow = getCurrentIndexRow(indexRow: indexPath.row)
+        showAlert(currentIndexRow: CurrentIndexRow)
+        print("AlertShowed")
+    }
+    
+    func getCurrentIndexRow(indexRow: Int) -> Int{
+        let CurrentIndexRow = recordList.count - indexRow - 1
+        return CurrentIndexRow
+    }
+    
+    //end
+    
     func saveRecords() {
         let success =
             NSKeyedArchiver.archiveRootObject(recordList, toFile: recordInfo.userPath)
@@ -84,10 +140,11 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath) as! recordTableViewCell
         // Configure the cell...
-        cell.itemLabel?.text = recordList[indexPath.row].itemName
-        cell.placeLabel?.text = recordList[indexPath.row].place
-        cell.timeLabel?.text = ABFormatter.dateFormatter.string(from: recordList[indexPath.row].date!)
-        cell.costLabel?.text = recordList[indexPath.row].cost?.description
+        let currentIndexRow = getCurrentIndexRow(indexRow: indexPath.row)
+        cell.itemLabel?.text = recordList[currentIndexRow].itemName
+        cell.placeLabel?.text = recordList[currentIndexRow].place
+        cell.timeLabel?.text = ABFormatter.dateFormatter.string(from: recordList[currentIndexRow].date!)
+        cell.costLabel?.text = recordList[currentIndexRow].cost?.description
 
         
         return cell
@@ -143,12 +200,14 @@ class recordViewController: UIViewController, UITableViewDelegate , UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        /*
         if let destVC = segue.destination as? detailViewController{
             if let selectedIndex = recordTableView.indexPathForSelectedRow{
                 destVC.record = recordList[selectedIndex.row]
                 print(recordList[selectedIndex.row].itemName)
             }
         }
+ */
     }
 
 

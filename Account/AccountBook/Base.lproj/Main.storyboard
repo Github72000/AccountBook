@@ -129,7 +129,6 @@
                                             <outlet property="itemLabel" destination="1qq-yg-0By" id="Xpg-Wx-c2c"/>
                                             <outlet property="placeLabel" destination="wQn-qx-UdY" id="OGo-Nd-ghF"/>
                                             <outlet property="timeLabel" destination="bz2-mW-Wcm" id="1lq-uB-TNo"/>
-                                            <segue destination="Gwz-Tt-6J3" kind="show" id="qbK-Wj-h1D"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -334,7 +333,4 @@
     <resources>
         <image name="Add" width="64" height="64"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="qbK-Wj-h1D"/>
-    </inferredMetricsTieBreakers>
 </document>
