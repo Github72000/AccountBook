@@ -1,8 +1,8 @@
 //
-//  StatGenerator.swift
+//  File.swift
 //  AccountBook
 //
-//  Created by Kotori on 2020/12/24.
+//  Created by 陈华纲 on 2020/12/14.
 //  Copyright © 2020 陈华纲. All rights reserved.
 //
 
